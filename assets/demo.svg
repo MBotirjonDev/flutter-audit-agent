@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="729" viewBox="0 0 1280 729" role="img" aria-label="Scanner output on an intentionally vulnerable Flutter app">
+<rect width="1280" height="729" rx="14" fill="#0D1117"/>
+<rect width="1280" height="48" rx="14" fill="#161B22"/><rect y="34" width="1280" height="14" fill="#161B22"/>
+<circle cx="28" cy="24" r="7" fill="#FF5F57"/><circle cx="52" cy="24" r="7" fill="#FEBC2E"/><circle cx="76" cy="24" r="7" fill="#28C840"/>
+<text x="640" y="30" text-anchor="middle" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" fill="#8B949E">flutter-audit-agent — triage scan</text>
+<g font-family="'JetBrains Mono', SFMono-Regular, Consolas, 'DejaVu Sans Mono', Menlo, monospace" font-size="17" xml:space="preserve">
+<text x="40" y="100"><tspan fill="#7EE787">➜</tspan><tspan fill="#79C0FF"> shop_app</tspan><tspan fill="#E6EDF3"> node scan.cjs .</tspan></text>
+<text x="40" y="141.6" fill="#8B949E">flutter-security-audit · shop_app · 6 files · 25 rules</text>
+<text x="40" y="180.6"><tspan fill="#FF7B72" font-weight="700">CRITICAL </tspan><tspan fill="#D2A8FF">FSA-BE-001</tspan><tspan fill="#E6EDF3">  Firebase rules open to everyone</tspan></text>
+<text x="133" y="206.6" fill="#79C0FF">firestore.rules:5<tspan fill="#6E7681">   allow read, write: if true;</tspan></text>
+<text x="40" y="241.7"><tspan fill="#FF7B72" font-weight="700">CRITICAL </tspan><tspan fill="#D2A8FF">FSA-NET-001</tspan><tspan fill="#E6EDF3">  TLS certificate validation disabled</tspan></text>
+<text x="133" y="267.7" fill="#79C0FF">lib/main.dart:44<tspan fill="#6E7681">   client.badCertificateCallback = (cert, host, port) =&gt; true;</tspan></text>
+<text x="40" y="302.8"><tspan fill="#FF7B72" font-weight="700">CRITICAL </tspan><tspan fill="#D2A8FF">FSA-SEC-002</tspan><tspan fill="#E6EDF3">  Supabase service_role key referenced in the client</tspan></text>
+<text x="133" y="328.8" fill="#79C0FF">lib/main.dart:15<tspan fill="#6E7681">   const supabaseAdminRole = 'service_role';</tspan></text>
+<text x="40" y="363.90000000000003"><tspan fill="#FFA657" font-weight="700">HIGH     </tspan><tspan fill="#D2A8FF">FSA-STO-001</tspan><tspan fill="#E6EDF3">  Sensitive value stored in SharedPreferences</tspan></text>
+<text x="133" y="389.90000000000003" fill="#79C0FF">lib/main.dart:22<tspan fill="#6E7681">   await prefs.setString('access_token', token);</tspan></text>
+<text x="40" y="425.00000000000006"><tspan fill="#FFA657" font-weight="700">HIGH     </tspan><tspan fill="#D2A8FF">FSA-CRY-003</tspan><tspan fill="#E6EDF3">  Hardcoded encryption key or IV</tspan></text>
+<text x="133" y="451.00000000000006" fill="#79C0FF">lib/main.dart:38<tspan fill="#6E7681">   final key = Key.fromUtf8('my32le…');</tspan></text>
+<text x="40" y="486.1000000000001"><tspan fill="#FFA657" font-weight="700">HIGH     </tspan><tspan fill="#D2A8FF">FSA-SEC-007</tspan><tspan fill="#E6EDF3">  .env file bundled as a Flutter asset</tspan></text>
+<text x="133" y="512.1000000000001" fill="#79C0FF">pubspec.yaml:12<tspan fill="#6E7681">   - .env</tspan></text>
+<text x="40" y="547.2000000000002"><tspan fill="#E3B341" font-weight="700">MEDIUM   </tspan><tspan fill="#D2A8FF">FSA-WEB-002</tspan><tspan fill="#E6EDF3">  WebView loads a URL from a variable</tspan></text>
+<text x="133" y="573.2000000000002" fill="#79C0FF">lib/main.dart:50<tspan fill="#6E7681">   controller.loadRequest(Uri.parse(deepLinkUrl));</tspan></text>
+<text x="40" y="608.3000000000002"><tspan fill="#E3B341" font-weight="700">MEDIUM   </tspan><tspan fill="#D2A8FF">FSA-BE-002</tspan><tspan fill="#E6EDF3">  Client-side authorization flag</tspan></text>
+<text x="133" y="634.3000000000002" fill="#79C0FF">lib/main.dart:27<tspan fill="#6E7681">   isPremium = true;</tspan></text>
+<text x="40" y="669.4000000000002"><tspan fill="#E6EDF3" font-weight="700">23 leads</tspan><tspan fill="#8B949E">  (</tspan><tspan fill="#FF7B72">critical 4</tspan><tspan fill="#8B949E"> · </tspan><tspan fill="#FFA657">high 6</tspan><tspan fill="#8B949E"> · </tspan><tspan fill="#E3B341">medium 8</tspan><tspan fill="#8B949E"> · </tspan><tspan fill="#79C0FF">low 4</tspan><tspan fill="#8B949E"> · info 1</tspan><tspan fill="#8B949E">)  →  agent validates each lead before reporting</tspan></text>
+</g></svg>

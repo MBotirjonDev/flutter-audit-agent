@@ -1,0 +1,8 @@
+name: clean_app
+description: Fixture that should produce zero leads.
+publish_to: none
+environment:
+  sdk: ">=3.4.0 <4.0.0"
+flutter:
+  assets:
+    - assets/images/

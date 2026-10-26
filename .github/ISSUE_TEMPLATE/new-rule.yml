@@ -1,0 +1,35 @@
+name: New rule
+description: Propose a new scanner rule or checklist item
+labels: [new-rule]
+body:
+  - type: textarea
+    id: pattern
+    attributes:
+      label: Insecure pattern
+      description: Minimal Dart / XML / rules snippet that should be flagged (no real keys).
+      render: dart
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why it matters
+      description: Who is the attacker and what do they gain?
+    validations:
+      required: true
+  - type: textarea
+    id: safe
+    attributes:
+      label: Safe version / things that must NOT be flagged
+      render: dart
+  - type: input
+    id: masvs
+    attributes:
+      label: OWASP MASVS control (if known)
+      placeholder: MASVS-STORAGE-1
+  - type: checkboxes
+    id: pr
+    attributes:
+      label: Contribution
+      options:
+        - label: I'd like to implement this rule myself

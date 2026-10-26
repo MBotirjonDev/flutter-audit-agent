@@ -1,0 +1,43 @@
+{
+  "target": "example_shop_app",
+  "audited_commit": "a1b2c3d",
+  "generated_at": "2026-10-26T09:00:00Z",
+  "findings": [
+    {
+      "id": "F-1",
+      "verdict": "confirmed",
+      "title": "Firestore orders collection is world-readable and writable",
+      "severity": "critical",
+      "masvs": "MASVS-AUTH-1",
+      "leads": ["FSA-BE-001"],
+      "location": { "file": "firestore.rules", "line": 5 },
+      "attacker": "Anyone on the internet. The Firebase project ID ships inside the APK (google-services.json), no login needed.",
+      "trace": [
+        "firestore.rules:5 grants `allow read, write: if true` on /orders/{orderId}",
+        "lib/data/order_repository.dart:22 stores customer name, phone and delivery address in /orders",
+        "The Firestore REST API accepts unauthenticated requests for this path, so every order can be listed, edited or deleted"
+      ],
+      "impact": "Full disclosure of customer PII (names, phone numbers, addresses) and the ability to alter or delete any order.",
+      "fix": "Require auth and ownership: `allow read, update: if request.auth != null && request.auth.uid == resource.data.userId;` and restrict create to the signed-in user's own uid. Deploy with `firebase deploy --only firestore:rules`.",
+      "verified_by": "verifier-2 (fresh context, re-read rules file and repository code)"
+    },
+    {
+      "id": "F-2",
+      "verdict": "needs_validation",
+      "title": "Promo deep link may load an attacker URL into a WebView with a JS bridge",
+      "masvs": "MASVS-PLATFORM-2",
+      "leads": ["FSA-WEB-001", "FSA-WEB-002"],
+      "location": { "file": "lib/features/promo/promo_page.dart", "line": 31 },
+      "unresolved": "Whether the router validates the `url` query parameter of shop://promo before PromoPage receives it; the GoRouter redirect lives in a private package that was not available to the audit."
+    },
+    {
+      "id": "F-3",
+      "verdict": "rejected",
+      "title": "Google API key in lib/firebase_options.dart",
+      "masvs": "MASVS-STORAGE-2",
+      "leads": ["FSA-SEC-001"],
+      "location": { "file": "lib/firebase_options.dart", "line": 18 },
+      "rejection_reason": "Firebase client config key. It identifies the project and is public by design; access is governed by Security Rules and App Check, which are covered by F-1."
+    }
+  ]
+}

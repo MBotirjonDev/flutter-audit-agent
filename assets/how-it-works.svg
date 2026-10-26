@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="470" viewBox="0 0 1280 470" role="img" aria-labelledby="t d">
+  <title id="t">How the audit works</title>
+  <desc id="d">Six phases: setup, reconnaissance, triage scan, hunting, adversarial validation, structured findings and report.</desc>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#58A6FF"/>
+    </marker>
+    <style>
+      .box{fill:#11213F;stroke:#2F81F7;stroke-opacity:.55;stroke-width:1.5}
+      .hot{fill:#2A1414;stroke:#FF7B72;stroke-opacity:.8;stroke-width:1.5}
+      .done{fill:#0F2A1C;stroke:#3FB950;stroke-opacity:.8;stroke-width:1.5}
+      .n{font:700 15px Inter,'Segoe UI',Helvetica,Arial,sans-serif;fill:#58A6FF;letter-spacing:1px}
+      .h{font:700 24px Inter,'Segoe UI',Helvetica,Arial,sans-serif;fill:#F0F6FC}
+      .p{font:400 16px Inter,'Segoe UI',Helvetica,Arial,sans-serif;fill:#9FB0C8}
+      .f{font:500 15px 'JetBrains Mono',SFMono-Regular,Consolas,Menlo,monospace;fill:#7EE787}
+      .line{stroke:#58A6FF;stroke-width:2;fill:none}
+    </style>
+  </defs>
+  <rect width="1280" height="470" rx="20" fill="#0B1220"/>
+
+  <!-- row 1 -->
+  <g transform="translate(40 40)">
+    <rect class="box" width="370" height="170" rx="16"/>
+    <text class="n" x="24" y="38">PHASE 1</text><text class="h" x="24" y="72">Reconnaissance</text>
+    <text class="p" x="24" y="102">Assets, trust boundaries, deep links,</text>
+    <text class="p" x="24" y="124">backends, platform channels</text>
+    <text class="f" x="24" y="152">architecture.md</text>
+  </g>
+  <g transform="translate(455 40)">
+    <rect class="box" width="370" height="170" rx="16"/>
+    <text class="n" x="24" y="38">PHASE 2</text><text class="h" x="24" y="72">Triage scan</text>
+    <text class="p" x="24" y="102">25 Flutter-specific rules.</text>
+    <text class="p" x="24" y="124">Every hit is a question, not a verdict</text>
+    <text class="f" x="24" y="152">leads.json</text>
+  </g>
+  <g transform="translate(870 40)">
+    <rect class="box" width="370" height="170" rx="16"/>
+    <text class="n" x="24" y="38">PHASE 3</text><text class="h" x="24" y="72">Hunting</text>
+    <text class="p" x="24" y="102">8 checklists, one hunter per area</text>
+    <text class="p" x="24" y="124">source → path → sink → impact</text>
+    <text class="f" x="24" y="152">candidates</text>
+  </g>
+
+  <!-- row 2 -->
+  <g transform="translate(870 260)">
+    <rect class="hot" width="370" height="170" rx="16"/>
+    <text class="n" x="24" y="38" fill="#FF7B72" style="fill:#FF7B72">PHASE 4</text><text class="h" x="24" y="72">Adversarial validation</text>
+    <text class="p" x="24" y="102">A fresh verifier tries to disprove</text>
+    <text class="p" x="24" y="124">every candidate. Finder ≠ verifier</text>
+    <text class="f" x="24" y="152" style="fill:#FFA198;font-size:13px">confirmed · needs_validation · rejected</text>
+  </g>
+  <g transform="translate(455 260)">
+    <rect class="box" width="370" height="170" rx="16"/>
+    <text class="n" x="24" y="38">PHASE 5</text><text class="h" x="24" y="72">Structured findings</text>
+    <text class="p" x="24" y="102">Trace with file:line for every step,</text>
+    <text class="p" x="24" y="124">checked by validate-findings.cjs</text>
+    <text class="f" x="24" y="152">findings.json</text>
+  </g>
+  <g transform="translate(40 260)">
+    <rect class="done" width="370" height="170" rx="16"/>
+    <text class="n" x="24" y="38" style="fill:#3FB950">PHASE 6</text><text class="h" x="24" y="72">Developer-ready report</text>
+    <text class="p" x="24" y="102">Impact in plain words + a fix in</text>
+    <text class="p" x="24" y="124">your own Riverpod / Bloc / Dio style</text>
+    <text class="f" x="24" y="152">REPORT.md</text>
+  </g>
+
+  <!-- arrows -->
+  <path class="line" d="M412 125H451" marker-end="url(#a)"/>
+  <path class="line" d="M827 125H866" marker-end="url(#a)"/>
+  <path class="line" d="M1055 212V256" marker-end="url(#a)"/>
+  <path class="line" d="M868 345H829" marker-end="url(#a)"/>
+  <path class="line" d="M453 345H414" marker-end="url(#a)"/>
+</svg>

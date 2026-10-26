@@ -1,0 +1,44 @@
+name: 'Flutter Audit Agent'
+description: 'Zero-dependency triage scan for Flutter & Dart apps: leaked keys, insecure storage, TLS, WebViews, Firebase rules and more.'
+author: 'MBotirjonDev'
+branding:
+  icon: 'shield'
+  color: 'blue'
+
+inputs:
+  path:
+    description: 'Path to the Flutter project (or monorepo root) to scan'
+    required: false
+    default: '.'
+  fail-on:
+    description: 'Fail the job when a lead at or above this severity is found: info | low | medium | high | critical | none'
+    required: false
+    default: 'high'
+  min-severity:
+    description: 'Ignore leads below this severity'
+    required: false
+    default: 'low'
+  output:
+    description: 'Where to write the JSON leads file'
+    required: false
+    default: 'flutter-security-leads.json'
+
+outputs:
+  leads-file:
+    description: 'Path to the JSON leads file'
+    value: ${{ inputs.output }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Run flutter-security-audit scanner
+      shell: bash
+      env:
+        FSA_PATH: ${{ inputs.path }}
+        FSA_FAIL_ON: ${{ inputs.fail-on }}
+        FSA_MIN: ${{ inputs.min-severity }}
+        FSA_OUT: ${{ inputs.output }}
+      run: |
+        args=("$FSA_PATH" --out "$FSA_OUT" --min-severity "$FSA_MIN")
+        if [ "$FSA_FAIL_ON" != "none" ]; then args+=(--fail-on "$FSA_FAIL_ON"); fi
+        node "${{ github.action_path }}/skills/flutter-security-audit/scripts/scan.cjs" "${args[@]}"

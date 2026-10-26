@@ -1,0 +1,16 @@
+{
+  "name": "flutter-audit-agent",
+  "version": "0.1.0",
+  "description": "Security audit skill for AI coding agents (Claude Code, Codex, Cursor) and a zero-dependency triage scanner for Flutter & Dart apps.",
+  "private": true,
+  "license": "MIT",
+  "author": "Botirjon (https://github.com/MBotirjonDev)",
+  "repository": { "type": "git", "url": "https://github.com/MBotirjonDev/flutter-audit-agent.git" },
+  "bin": { "flutter-security-scan": "skills/flutter-security-audit/scripts/scan.cjs" },
+  "scripts": {
+    "test": "node tests/scan.test.cjs",
+    "scan": "node skills/flutter-security-audit/scripts/scan.cjs"
+  },
+  "engines": { "node": ">=18" },
+  "keywords": ["flutter", "dart", "security", "audit", "owasp", "masvs", "mobile-security", "claude-code", "agent-skills", "firebase", "supabase"]
+}

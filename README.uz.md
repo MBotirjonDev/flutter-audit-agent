@@ -53,3 +53,11 @@ Yangi qoida qo'shish 15 daqiqa vaqt oladi: regex, fixture va test. Batafsil
 belgili vazifalar bor.
 
 Faqat o'zingizga tegishli yoki tekshirishga ruxsatingiz bor kodni skanerlang.
+
+## Boshqa skill'lar
+
+Shu muallifning boshqa bepul agent skill'lari:
+
+- [Telegram Mini App Audit](https://github.com/MBotirjonDev/telegram-miniapp-audit) — Security audit for Telegram bots and Mini Apps: initData, bot tokens, webhooks, payments
+- [Supabase RLS Audit](https://github.com/MBotirjonDev/supabase-rls-audit) — Row Level Security audit: open tables, weak policies, definer views and functions, storage
+- [Flutter Release Checker](https://github.com/MBotirjonDev/flutter-release-checker) — Finds what gets Flutter apps rejected by Google Play and the App Store

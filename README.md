@@ -209,6 +209,18 @@ mistakes early — not as a replacement for a professional pentest of a high-ris
 
 Only scan code you own or are authorized to test.
 
+## Part of a toolkit
+
+Four zero-dependency agent skills that share the same lead → validate → report workflow.
+They work well together on a typical Flutter + Supabase + Telegram stack.
+
+| Skill | What it covers |
+|---|---|
+| **[Flutter Audit Agent](https://github.com/MBotirjonDev/flutter-audit-agent)** (you are here) | Security audit for Flutter & Dart apps: secrets, storage, TLS, WebViews, Firebase rules |
+| [Telegram Mini App Audit](https://github.com/MBotirjonDev/telegram-miniapp-audit) | Security audit for Telegram bots and Mini Apps: initData, bot tokens, webhooks, payments |
+| [Supabase RLS Audit](https://github.com/MBotirjonDev/supabase-rls-audit) | Row Level Security audit: open tables, weak policies, definer views and functions, storage |
+| [Flutter Release Checker](https://github.com/MBotirjonDev/flutter-release-checker) | Finds what gets Flutter apps rejected by Google Play and the App Store |
+
 ## Star history
 
 If this saved you from shipping a leaked key, a ⭐ helps other Flutter devs find it.

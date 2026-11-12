@@ -10,7 +10,7 @@ plus a zero-dependency scanner for your laptop and your CI.</p>
 [![tests](https://github.com/MBotirjonDev/flutter-audit-agent/actions/workflows/test.yml/badge.svg)](https://github.com/MBotirjonDev/flutter-audit-agent/actions/workflows/test.yml)
 [![license: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![OWASP MASVS](https://img.shields.io/badge/mapped%20to-OWASP%20MASVS%20v2-orange)](https://mas.owasp.org/MASVS/)
-[![rules](https://img.shields.io/badge/scanner%20rules-25-58a6ff)](#scanner-rules)
+[![rules](https://img.shields.io/badge/scanner%20rules-26-58a6ff)](#scanner-rules)
 [![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
 [**Quick start**](#quick-start) · [**How it works**](#how-the-agent-audit-works) · [**What it catches**](#what-it-covers) · [**Contribute**](#roadmap--help-wanted) · [🇺🇿 O'zbekcha](README.uz.md)
@@ -172,6 +172,7 @@ Principles:
 | `FSA-BLD-001` | Release build without code shrinking | low | MASVS-RESILIENCE-3 |
 | `FSA-WEB-001` | JavaScript bridge exposed to a WebView | medium | MASVS-PLATFORM-2 |
 | `FSA-WEB-002` | WebView loads a URL from a variable | medium | MASVS-PLATFORM-2 |
+| `FSA-WEB-003` | WebView allows file URLs to access other local files | high | MASVS-PLATFORM-2 |
 | `FSA-CRY-001` | Weak hash (MD5/SHA-1) | medium | MASVS-CRYPTO-1 |
 | `FSA-CRY-002` | Non-cryptographic Random used | low | MASVS-CRYPTO-1 |
 | `FSA-CRY-003` | Hardcoded encryption key or IV | high | MASVS-CRYPTO-2 |
@@ -190,7 +191,6 @@ Good first contributions (each is a rule + a fixture + a test):
 - [ ] Supabase migrations: table created without `enable row level security`
 - [ ] Firestore rules: `if request.auth != null` with no ownership check
 - [ ] Dio `LogInterceptor(requestHeader: true)` outside `kDebugMode`
-- [ ] `flutter_inappwebview` with `allowFileAccessFromFileURLs: true`
 - [ ] Android `FileProvider` sharing `root-path`
 - [ ] iOS custom URL scheme without Universal Links
 - [ ] Payme / Click / Uzum: payment success trusted from the client

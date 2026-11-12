@@ -261,6 +261,17 @@ module.exports = [
     message: 'If the URL comes from a deep link, push payload or API response, an attacker can load their own page inside your app.',
     fix: 'Validate the scheme (https) and host against an allow-list before loading.',
   },
+  {
+    id: 'FSA-WEB-003',
+    title: 'WebView allows file URLs to access other local files',
+    severity: 'high',
+    files: DART,
+    pattern: /\ballowFileAccessFromFileURLs\s*(?::|=)\s*true\b/g,
+    masvs: 'MASVS-PLATFORM-2',
+    guide: 'WEBVIEW-DEEPLINKS.md#file-url-access',
+    message: 'Enabling this can let file:// pages read other local files. If attacker-controlled content reaches the WebView, local data may be exposed; validate the platform, content source and reachable files.',
+    fix: 'Set allowFileAccessFromFileURLs to false or omit it, avoid untrusted file:// content, and restrict navigation to trusted HTTPS origins.',
+  },
 
   // ---------------------------------------------------------------- crypto
   {

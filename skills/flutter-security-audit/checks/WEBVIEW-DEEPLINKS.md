@@ -55,5 +55,28 @@ Report as **high** when this chain exists in a release build:
 
 Without step 3 it is usually an open redirect / phishing-in-app issue (medium).
 
+### File-URL access
+
+In `flutter_inappwebview`, `allowFileAccessFromFileURLs: true` can let a page loaded
+from `file://` read other local files. If attacker-controlled HTML, injected content or
+navigation can reach that page, this may become a local-file disclosure path. Treat a
+scanner hit as a lead: check the affected platform, content source, release settings and
+which files are actually reachable before confirming impact.
+
+```dart
+// ❌ A file-origin page may be able to read other local files.
+final riskySettings = InAppWebViewSettings(
+  allowFileAccessFromFileURLs: true,
+);
+
+// ✅ Keep file-origin access disabled.
+final saferSettings = InAppWebViewSettings(
+  allowFileAccessFromFileURLs: false,
+);
+```
+
+Prefer omitting the setting when file access is not needed, and restrict WebView
+navigation to trusted HTTPS origins. Do not load untrusted HTML from `file://`.
+
 Also check `url_launcher` with attacker-controlled `intent://` or `file://` URLs, and
 `Navigator`/`go_router` redirects that take a `next=` parameter.

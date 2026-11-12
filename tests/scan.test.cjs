@@ -60,9 +60,21 @@ test('every rule fires on the vulnerable fixture', () => {
   assert.deepStrictEqual(missing, [], `rules with no positive fixture: ${missing.join(', ')}`);
 });
 
+test('FSA-WEB-003 flags enabled file-URL access as high severity', () => {
+  const fileAccess = vuln.leads.filter((l) => l.rule === 'FSA-WEB-003');
+  assert.strictEqual(fileAccess.length, 1);
+  assert.strictEqual(fileAccess[0].severity_hint, 'high');
+  assert.match(fileAccess[0].snippet, /allowFileAccessFromFileURLs\s*:\s*true/);
+});
+
 test('clean fixture produces zero leads', () => {
   const clean = scan(path.join(__dirname, 'fixtures', 'clean_app'));
   assert.strictEqual(clean.leads.length, 0, JSON.stringify(clean.leads.map((l) => `${l.rule} ${l.file}:${l.line}`)));
+});
+
+test('FSA-WEB-003 ignores disabled file-URL access', () => {
+  const clean = scan(path.join(__dirname, 'fixtures', 'clean_app'));
+  assert.ok(!clean.leads.some((l) => l.rule === 'FSA-WEB-003'));
 });
 
 test('generated firebase_options.dart is excluded from FSA-SEC-001', () => {
